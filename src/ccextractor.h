@@ -48,6 +48,8 @@ void sigterm_handler(int sig);
 void sigint_handler(int sig);
 void print_end_msg(void);
 int main(int argc, char *argv[]);
+void thread_main();
+void thread_id();
 
 int cc_to_python_get_subs_number_of_lines();
 char* cc_to_python_get_sub(int i);

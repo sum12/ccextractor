@@ -233,6 +233,14 @@ def main(argc, argv):
     return _ccextractor.main(argc, argv)
 main = _ccextractor.main
 
+def thread_main():
+    return _ccextractor.thread_main()
+thread_main = _ccextractor.thread_main
+
+def thread_id():
+    return _ccextractor.thread_id()
+thread_id = _ccextractor.thread_id
+
 def cc_to_python_get_subs_number_of_lines():
     return _ccextractor.cc_to_python_get_subs_number_of_lines()
 cc_to_python_get_subs_number_of_lines = _ccextractor.cc_to_python_get_subs_number_of_lines
@@ -252,6 +260,14 @@ setautoprogram = _ccextractor.setautoprogram
 def setstdout(api_options):
     return _ccextractor.setstdout(api_options)
 setstdout = _ccextractor.setstdout
+
+def setpesheader(api_options):
+    return _ccextractor.setpesheader(api_options)
+setpesheader = _ccextractor.setpesheader
+
+def setdebugdvbsub(api_options):
+    return _ccextractor.setdebugdvbsub(api_options)
+setdebugdvbsub = _ccextractor.setdebugdvbsub
 # This file is compatible with both classic and new-style classes.
 
 

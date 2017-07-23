@@ -512,8 +512,28 @@ int __wrap_write(int file_handle, char* buffer, int nbyte)
 //      return __real_write(file_handle,buffer,nbyte);
 }
 
+pthread_t *python_thread_ids=NULL;
+int thread_count;
+void thread_id(){
+     mprint("created thread with thread id %u\n",pthread_self());
+}
+void thread_main(){
+    printf("MAIN\n");
+     mprint("Inside main\n");
+     thread_count++;
+     python_thread_ids=realloc(python_thread_ids,thread_count*sizeof(pthread_t));
+     pthread_create(&python_thread_ids[thread_count-1], NULL,&thread_id, NULL);
+     mprint("Enterring thread joining\n");
+     int i=0;
+     while(i<thread_count){
+         mprint("Joining thread with id=%u\n",python_thread_ids[i]);
+          pthread_join(python_thread_ids[i],NULL);
+          i++;
+      }
+  }
 
 int main(int argc, char* argv[]){
+    /*
     int i;
     struct ccx_s_options* api_options = api_init_options();
     check_configuration_file(*api_options);
@@ -522,6 +542,7 @@ int main(int argc, char* argv[]){
     
     int compile_ret = compile_params(api_options,argc);
     int start_ret = api_start(*api_options);
-    
 	return start_ret;
-}
+    */
+    thread_main();
+    }

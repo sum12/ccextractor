@@ -2,6 +2,11 @@ import ccextractor as cc
 import os
 import time
 import sys
+
+
+
+"""SINGLE THREAD EXECUTION IN PYTHON"""
+"""
 s =  cc.api_init_options()
 cc.check_configuration_file(s)
 for i in sys.argv[1:]:
@@ -15,3 +20,4 @@ start_ret = cc.api_start(s);
 #    print cc.cc_to_python_get_sub(item)
 
 #os.system('clear')
+"""

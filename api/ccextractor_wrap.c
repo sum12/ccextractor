@@ -4415,6 +4415,30 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_thread_main(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  
+  if (!PyArg_ParseTuple(args,(char *)":thread_main")) SWIG_fail;
+  thread_main();
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_thread_id(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  
+  if (!PyArg_ParseTuple(args,(char *)":thread_id")) SWIG_fail;
+  thread_id();
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_cc_to_python_get_subs_number_of_lines(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   int result;
@@ -4535,6 +4559,48 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_setpesheader(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  struct ccx_s_options *arg1 = (struct ccx_s_options *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:setpesheader",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_ccx_s_options, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "setpesheader" "', argument " "1"" of type '" "struct ccx_s_options *""'"); 
+  }
+  arg1 = (struct ccx_s_options *)(argp1);
+  setpesheader(arg1);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_setdebugdvbsub(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  struct ccx_s_options *arg1 = (struct ccx_s_options *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:setdebugdvbsub",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_ccx_s_options, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "setdebugdvbsub" "', argument " "1"" of type '" "struct ccx_s_options *""'"); 
+  }
+  arg1 = (struct ccx_s_options *)(argp1);
+  setdebugdvbsub(arg1);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 static PyMethodDef SwigMethods[] = {
 	 { (char *)"SWIG_PyInstanceMethod_New", (PyCFunction)SWIG_PyInstanceMethod_New, METH_O, NULL},
 	 { (char *)"fdprintf", _wrap_fdprintf, METH_VARARGS, NULL},
@@ -4569,11 +4635,15 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"sigint_handler", _wrap_sigint_handler, METH_VARARGS, NULL},
 	 { (char *)"print_end_msg", _wrap_print_end_msg, METH_VARARGS, NULL},
 	 { (char *)"main", _wrap_main, METH_VARARGS, NULL},
+	 { (char *)"thread_main", _wrap_thread_main, METH_VARARGS, NULL},
+	 { (char *)"thread_id", _wrap_thread_id, METH_VARARGS, NULL},
 	 { (char *)"cc_to_python_get_subs_number_of_lines", _wrap_cc_to_python_get_subs_number_of_lines, METH_VARARGS, NULL},
 	 { (char *)"cc_to_python_get_sub", _wrap_cc_to_python_get_sub, METH_VARARGS, NULL},
 	 { (char *)"__wrap_write", _wrap___wrap_write, METH_VARARGS, NULL},
 	 { (char *)"setautoprogram", _wrap_setautoprogram, METH_VARARGS, NULL},
 	 { (char *)"setstdout", _wrap_setstdout, METH_VARARGS, NULL},
+	 { (char *)"setpesheader", _wrap_setpesheader, METH_VARARGS, NULL},
+	 { (char *)"setdebugdvbsub", _wrap_setdebugdvbsub, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 
