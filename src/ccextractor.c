@@ -512,11 +512,19 @@ int __wrap_write(int file_handle, char* buffer, int nbyte)
 //      return __real_write(file_handle,buffer,nbyte);
 }
 
+/*
+ * MULTITHREADING CONSTANTS
+ */
 pthread_t *python_thread_ids=NULL;
 int thread_count;
+
+/*
+ * MULTITHREADING CONSTANTS
+ */
 void thread_id(){
      mprint("created thread with thread id %u\n",pthread_self());
 }
+
 void thread_main(){
     printf("MAIN\n");
      mprint("Inside main\n");
@@ -531,6 +539,9 @@ void thread_main(){
           i++;
       }
   }
+
+
+
 //int main(int argc, char* argv[]){
 int main(){
     int i;
