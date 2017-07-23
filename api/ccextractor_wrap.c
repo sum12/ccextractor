@@ -2986,11 +2986,12 @@ SWIG_Python_NonDynamicSetAttr(PyObject *obj, PyObject *name, PyObject *value) {
 #define SWIGTYPE_p_char swig_types[4]
 #define SWIGTYPE_p_int swig_types[5]
 #define SWIGTYPE_p_lib_ccx_ctx swig_types[6]
-#define SWIGTYPE_p_p_char swig_types[7]
-#define SWIGTYPE_p_unsigned_char swig_types[8]
-#define SWIGTYPE_p_unsigned_int swig_types[9]
-static swig_type_info *swig_types[11];
-static swig_module_info swig_module = {swig_types, 10, 0, 0, 0, 0};
+#define SWIGTYPE_p_multithreading_params swig_types[7]
+#define SWIGTYPE_p_p_char swig_types[8]
+#define SWIGTYPE_p_unsigned_char swig_types[9]
+#define SWIGTYPE_p_unsigned_int swig_types[10]
+static swig_type_info *swig_types[12];
+static swig_module_info swig_module = {swig_types, 11, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -4068,6 +4069,151 @@ SWIGINTERN PyObject *cc_to_python_subs_swigregister(PyObject *SWIGUNUSEDPARM(sel
   return SWIG_Py_Void();
 }
 
+SWIGINTERN PyObject *_wrap_multithreading_params_argv_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  struct multithreading_params *arg1 = (struct multithreading_params *) 0 ;
+  char **arg2 = (char **) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:multithreading_params_argv_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_multithreading_params, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "multithreading_params_argv_set" "', argument " "1"" of type '" "struct multithreading_params *""'"); 
+  }
+  arg1 = (struct multithreading_params *)(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_p_char, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "multithreading_params_argv_set" "', argument " "2"" of type '" "char **""'"); 
+  }
+  arg2 = (char **)(argp2);
+  if (arg1) (arg1)->argv = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_multithreading_params_argv_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  struct multithreading_params *arg1 = (struct multithreading_params *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  char **result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:multithreading_params_argv_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_multithreading_params, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "multithreading_params_argv_get" "', argument " "1"" of type '" "struct multithreading_params *""'"); 
+  }
+  arg1 = (struct multithreading_params *)(argp1);
+  result = (char **) ((arg1)->argv);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_p_char, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_multithreading_params_argc_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  struct multithreading_params *arg1 = (struct multithreading_params *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:multithreading_params_argc_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_multithreading_params, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "multithreading_params_argc_set" "', argument " "1"" of type '" "struct multithreading_params *""'"); 
+  }
+  arg1 = (struct multithreading_params *)(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "multithreading_params_argc_set" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = (int)(val2);
+  if (arg1) (arg1)->argc = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_multithreading_params_argc_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  struct multithreading_params *arg1 = (struct multithreading_params *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:multithreading_params_argc_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_multithreading_params, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "multithreading_params_argc_get" "', argument " "1"" of type '" "struct multithreading_params *""'"); 
+  }
+  arg1 = (struct multithreading_params *)(argp1);
+  result = (int) ((arg1)->argc);
+  resultobj = SWIG_From_int((int)(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_multithreading_params(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  struct multithreading_params *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)":new_multithreading_params")) SWIG_fail;
+  result = (struct multithreading_params *)calloc(1, sizeof(struct multithreading_params));
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_multithreading_params, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_multithreading_params(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  struct multithreading_params *arg1 = (struct multithreading_params *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_multithreading_params",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_multithreading_params, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_multithreading_params" "', argument " "1"" of type '" "struct multithreading_params *""'"); 
+  }
+  arg1 = (struct multithreading_params *)(argp1);
+  free((char *) arg1);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *multithreading_params_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!PyArg_ParseTuple(args,(char *)"O:swigregister", &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_multithreading_params, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
 SWIGINTERN int Swig_var_ccx_options_set(PyObject *_val) {
   {
     void *argp = 0;
@@ -4386,10 +4532,28 @@ fail:
 
 SWIGINTERN PyObject *_wrap_main(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
+  int arg1 ;
+  char **arg2 ;
+  int val1 ;
+  int ecode1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
   int result;
   
-  if (!PyArg_ParseTuple(args,(char *)":main")) SWIG_fail;
-  result = (int)main();
+  if (!PyArg_ParseTuple(args,(char *)"OO:main",&obj0,&obj1)) SWIG_fail;
+  ecode1 = SWIG_AsVal_int(obj0, &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "main" "', argument " "1"" of type '" "int""'");
+  } 
+  arg1 = (int)(val1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_p_char, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "main" "', argument " "2"" of type '" "char *[]""'"); 
+  } 
+  arg2 = (char **)(argp2);
+  result = (int)main(arg1,arg2);
   resultobj = SWIG_From_int((int)(result));
   return resultobj;
 fail:
@@ -4397,23 +4561,61 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_thread_main(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_thread_init(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
+  int arg1 ;
+  char **arg2 = (char **) 0 ;
+  PyObject * obj0 = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)":thread_main")) SWIG_fail;
-  thread_main();
+  if (!PyArg_ParseTuple(args,(char *)"O:thread_init",&obj0)) SWIG_fail;
+  {
+    /* Check if is a list */
+    if (PyList_Check(obj0)) {
+      int i;
+      arg1 = PyList_Size(obj0);
+      arg2 = (char **) malloc((arg1+1)*sizeof(char *));
+      for (i = 0; i < arg1; i++) {
+        PyObject *o = PyList_GetItem(obj0,i);
+        if (PyString_Check(o))
+        arg2[i] = PyString_AsString(PyList_GetItem(obj0,i));
+        else {
+          PyErr_SetString(PyExc_TypeError,"list must contain strings");
+          free(arg2);
+          return NULL;
+        }
+      }
+      arg2[i] = 0;
+    } else {
+      PyErr_SetString(PyExc_TypeError,"not a list");
+      return NULL;
+    }
+  }
+  thread_init(arg1,arg2);
   resultobj = SWIG_Py_Void();
+  {
+    free((char *) arg2);
+  }
   return resultobj;
 fail:
+  {
+    free((char *) arg2);
+  }
   return NULL;
 }
 
 
-SWIGINTERN PyObject *_wrap_thread_id(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_thread_main(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
+  void *arg1 = (void *) 0 ;
+  int res1 ;
+  PyObject * obj0 = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)":thread_id")) SWIG_fail;
-  thread_id();
+  if (!PyArg_ParseTuple(args,(char *)"O:thread_main",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0,SWIG_as_voidptrptr(&arg1), 0, 0);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "thread_main" "', argument " "1"" of type '" "void *""'"); 
+  }
+  thread_main(arg1);
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -4606,6 +4808,13 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"new_cc_to_python_subs", _wrap_new_cc_to_python_subs, METH_VARARGS, NULL},
 	 { (char *)"delete_cc_to_python_subs", _wrap_delete_cc_to_python_subs, METH_VARARGS, NULL},
 	 { (char *)"cc_to_python_subs_swigregister", cc_to_python_subs_swigregister, METH_VARARGS, NULL},
+	 { (char *)"multithreading_params_argv_set", _wrap_multithreading_params_argv_set, METH_VARARGS, NULL},
+	 { (char *)"multithreading_params_argv_get", _wrap_multithreading_params_argv_get, METH_VARARGS, NULL},
+	 { (char *)"multithreading_params_argc_set", _wrap_multithreading_params_argc_set, METH_VARARGS, NULL},
+	 { (char *)"multithreading_params_argc_get", _wrap_multithreading_params_argc_get, METH_VARARGS, NULL},
+	 { (char *)"new_multithreading_params", _wrap_new_multithreading_params, METH_VARARGS, NULL},
+	 { (char *)"delete_multithreading_params", _wrap_delete_multithreading_params, METH_VARARGS, NULL},
+	 { (char *)"multithreading_params_swigregister", multithreading_params_swigregister, METH_VARARGS, NULL},
 	 { (char *)"api_init_options", _wrap_api_init_options, METH_VARARGS, NULL},
 	 { (char *)"check_configuration_file", _wrap_check_configuration_file, METH_VARARGS, NULL},
 	 { (char *)"compile_params", _wrap_compile_params, METH_VARARGS, NULL},
@@ -4617,8 +4826,8 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"sigint_handler", _wrap_sigint_handler, METH_VARARGS, NULL},
 	 { (char *)"print_end_msg", _wrap_print_end_msg, METH_VARARGS, NULL},
 	 { (char *)"main", _wrap_main, METH_VARARGS, NULL},
+	 { (char *)"thread_init", _wrap_thread_init, METH_VARARGS, NULL},
 	 { (char *)"thread_main", _wrap_thread_main, METH_VARARGS, NULL},
-	 { (char *)"thread_id", _wrap_thread_id, METH_VARARGS, NULL},
 	 { (char *)"cc_to_python_get_subs_number_of_lines", _wrap_cc_to_python_get_subs_number_of_lines, METH_VARARGS, NULL},
 	 { (char *)"cc_to_python_get_sub", _wrap_cc_to_python_get_sub, METH_VARARGS, NULL},
 	 { (char *)"__wrap_write", _wrap___wrap_write, METH_VARARGS, NULL},
@@ -4639,6 +4848,7 @@ static swig_type_info _swigt__p_ccx_s_options = {"_p_ccx_s_options", "struct ccx
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_int = {"_p_int", "int *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_lib_ccx_ctx = {"_p_lib_ccx_ctx", "struct lib_ccx_ctx *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_multithreading_params = {"_p_multithreading_params", "struct multithreading_params *|multithreading_params *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_p_char = {"_p_p_char", "char **", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_unsigned_char = {"_p_unsigned_char", "unsigned char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_unsigned_int = {"_p_unsigned_int", "unsigned int *", 0, 0, (void*)0, 0};
@@ -4651,6 +4861,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_char,
   &_swigt__p_int,
   &_swigt__p_lib_ccx_ctx,
+  &_swigt__p_multithreading_params,
   &_swigt__p_p_char,
   &_swigt__p_unsigned_char,
   &_swigt__p_unsigned_int,
@@ -4663,6 +4874,7 @@ static swig_cast_info _swigc__p_ccx_s_options[] = {  {&_swigt__p_ccx_s_options, 
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_lib_ccx_ctx[] = {  {&_swigt__p_lib_ccx_ctx, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_multithreading_params[] = {  {&_swigt__p_multithreading_params, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_char[] = {  {&_swigt__p_p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_unsigned_char[] = {  {&_swigt__p_unsigned_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_unsigned_int[] = {  {&_swigt__p_unsigned_int, 0, 0, 0},{0, 0, 0, 0}};
@@ -4675,6 +4887,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_char,
   _swigc__p_int,
   _swigc__p_lib_ccx_ctx,
+  _swigc__p_multithreading_params,
   _swigc__p_p_char,
   _swigc__p_unsigned_char,
   _swigc__p_unsigned_int,

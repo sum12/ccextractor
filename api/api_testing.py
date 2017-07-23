@@ -4,6 +4,10 @@ import time
 import sys
 
 
+#print len(sys.argv),sys.argv
+### working on getting multi-threading working 
+cc.thread_init(list(sys.argv[1:]))
+
 
 """SINGLE THREAD EXECUTION IN PYTHON"""
 """

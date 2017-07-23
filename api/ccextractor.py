@@ -188,6 +188,32 @@ cc_to_python_subs_swigregister = _ccextractor.cc_to_python_subs_swigregister
 cc_to_python_subs_swigregister(cc_to_python_subs)
 cvar = _ccextractor.cvar
 
+class multithreading_params(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, multithreading_params, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, multithreading_params, name)
+    __repr__ = _swig_repr
+    __swig_setmethods__["argv"] = _ccextractor.multithreading_params_argv_set
+    __swig_getmethods__["argv"] = _ccextractor.multithreading_params_argv_get
+    if _newclass:
+        argv = _swig_property(_ccextractor.multithreading_params_argv_get, _ccextractor.multithreading_params_argv_set)
+    __swig_setmethods__["argc"] = _ccextractor.multithreading_params_argc_set
+    __swig_getmethods__["argc"] = _ccextractor.multithreading_params_argc_get
+    if _newclass:
+        argc = _swig_property(_ccextractor.multithreading_params_argc_get, _ccextractor.multithreading_params_argc_set)
+
+    def __init__(self):
+        this = _ccextractor.new_multithreading_params()
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+    __swig_destroy__ = _ccextractor.delete_multithreading_params
+    __del__ = lambda self: None
+multithreading_params_swigregister = _ccextractor.multithreading_params_swigregister
+multithreading_params_swigregister(multithreading_params)
+
 
 def api_init_options():
     return _ccextractor.api_init_options()
@@ -229,17 +255,17 @@ def print_end_msg():
     return _ccextractor.print_end_msg()
 print_end_msg = _ccextractor.print_end_msg
 
-def main():
-    return _ccextractor.main()
+def main(argc, argv):
+    return _ccextractor.main(argc, argv)
 main = _ccextractor.main
 
-def thread_main():
-    return _ccextractor.thread_main()
-thread_main = _ccextractor.thread_main
+def thread_init(argc):
+    return _ccextractor.thread_init(argc)
+thread_init = _ccextractor.thread_init
 
-def thread_id():
-    return _ccextractor.thread_id()
-thread_id = _ccextractor.thread_id
+def thread_main(parameters):
+    return _ccextractor.thread_main(parameters)
+thread_main = _ccextractor.thread_main
 
 def cc_to_python_get_subs_number_of_lines():
     return _ccextractor.cc_to_python_get_subs_number_of_lines()

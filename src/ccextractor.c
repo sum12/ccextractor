@@ -519,27 +519,37 @@ pthread_t *python_thread_ids=NULL;
 int thread_count;
 
 /*
- * MULTITHREADING CONSTANTS
+ * MULTITHREADING FUNCTIONS
  */
-void thread_id(){
-     mprint("created thread with thread id %u\n",pthread_self());
-}
-
-void thread_init(){
+void thread_init(int argc, char** argv){
      thread_count++;
      python_thread_ids=realloc(python_thread_ids,thread_count*sizeof(pthread_t));
-     pthread_create(&python_thread_ids[thread_count-1], NULL,&thread_main, NULL);
-     mprint("Enterring thread joining\n");
+     int j=0;
+     struct multithreading_params thread_params;
+     thread_params.argc = argc;
+     thread_params.argv = malloc(sizeof(char*)*argc);
+     while(j<argc){
+         printf("argv[%d]=%s\n",j,argv[j]);
+         thread_params.argv[j]=malloc(sizeof(char)*strlen(argv[j]));
+        strcpy(thread_params.argv[j],argv[j]);
+        j++;
+     }
+     printf("argc for thread %u is %d\n",python_thread_ids[thread_count-1],argc);
+     pthread_create(&python_thread_ids[thread_count-1], NULL,&thread_main, &thread_params);
+     printf("Enterring thread joining\n");
      int i=0;
      while(i<thread_count){
-         mprint("Joining thread with id=%u\n",python_thread_ids[i]);
+         printf("Joining thread with id=%u\n",python_thread_ids[i]);
           pthread_join(python_thread_ids[i],NULL);
           i++;
       }
   }
 
-void thread_main(int argc, char* argv[]){
-    mprint("Inside thread main\n");
+void thread_main(void* parameters){
+    struct multithreading_params* params = (struct multithreading_params*) parameters;
+    printf("Inside thread main\n");
+    printf("argc for thread %u is %d\n",pthread_self(),params->argc);
+    /*
     struct ccx_s_options* api_options = api_init_options();
 	api_options->messages_target=CCX_MESSAGES_STDOUT_PYTHON;
     check_configuration_file(*api_options);
@@ -549,10 +559,11 @@ void thread_main(int argc, char* argv[]){
     int compile_ret = compile_params(api_options,argc);
     int start_ret = api_start(*api_options);
 	return start_ret;
+    */
     }
 
-//int main(int argc, char* argv[]){
-int main(){
+int main(int argc, char* argv[]){
+    /*
     int i;
     struct ccx_s_options* api_options = api_init_options();
     check_configuration_file(*api_options);
@@ -562,5 +573,6 @@ int main(){
     int compile_ret = compile_params(api_options,argc);
     int start_ret = api_start(*api_options);
 	return start_ret;
-    //thread_main();
+    */
+    thread_init(argc,argv);
     }
