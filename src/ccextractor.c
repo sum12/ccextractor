@@ -549,21 +549,21 @@ void thread_main(void* parameters){
     struct multithreading_params* params = (struct multithreading_params*) parameters;
     printf("Inside thread main\n");
     printf("argc for thread %u is %d\n",pthread_self(),params->argc);
-    /*
+    
     struct ccx_s_options* api_options = api_init_options();
 	api_options->messages_target=CCX_MESSAGES_STDOUT_PYTHON;
     check_configuration_file(*api_options);
-    for(i = 1; i < argc; i++)
-        api_add_param(api_options,argv[i]);
+    int i;
+    for(i = 0; i < params->argc; i++)
+        api_add_param(api_options,params->argv[i]);
     
-    int compile_ret = compile_params(api_options,argc);
+    int compile_ret = compile_params(api_options,params->argc);
     int start_ret = api_start(*api_options);
-	return start_ret;
-    */
+//	return start_ret;
+
     }
 
 int main(int argc, char* argv[]){
-    /*
     int i;
     struct ccx_s_options* api_options = api_init_options();
     check_configuration_file(*api_options);
@@ -573,6 +573,5 @@ int main(int argc, char* argv[]){
     int compile_ret = compile_params(api_options,argc);
     int start_ret = api_start(*api_options);
 	return start_ret;
-    */
-    thread_init(argc,argv);
+//    thread_init(argc,argv);
     }
