@@ -229,8 +229,8 @@ def print_end_msg():
     return _ccextractor.print_end_msg()
 print_end_msg = _ccextractor.print_end_msg
 
-def main(argc, argv):
-    return _ccextractor.main(argc, argv)
+def main():
+    return _ccextractor.main()
 main = _ccextractor.main
 
 def thread_main():

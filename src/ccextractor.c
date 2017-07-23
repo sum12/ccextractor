@@ -531,12 +531,11 @@ void thread_main(){
           i++;
       }
   }
-
-int main(int argc, char* argv[]){
-    /*
+//int main(int argc, char* argv[]){
+int main(){
     int i;
-    struct ccx_s_options* api_options = api_init_options();
-    check_configuration_file(*api_options);
+    //struct ccx_s_options* api_options = api_init_options();
+    /*check_configuration_file(*api_options);
     for(i = 1; i < argc; i++)
         api_add_param(api_options,argv[i]);
     
@@ -544,5 +543,6 @@ int main(int argc, char* argv[]){
     int start_ret = api_start(*api_options);
 	return start_ret;
     */
+	ccx_options.messages_target=CCX_MESSAGES_STDOUT_PYTHON;
     thread_main();
     }

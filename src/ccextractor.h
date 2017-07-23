@@ -47,7 +47,8 @@ char * api_param(struct ccx_s_options* api_options, int count);
 void sigterm_handler(int sig);
 void sigint_handler(int sig);
 void print_end_msg(void);
-int main(int argc, char *argv[]);
+//int main(int argc, char *argv[]);
+int main();
 void thread_main();
 void thread_id();
 
