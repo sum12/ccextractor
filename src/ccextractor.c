@@ -525,12 +525,10 @@ void thread_id(){
      mprint("created thread with thread id %u\n",pthread_self());
 }
 
-void thread_main(){
-    printf("MAIN\n");
-     mprint("Inside main\n");
+void thread_init(){
      thread_count++;
      python_thread_ids=realloc(python_thread_ids,thread_count*sizeof(pthread_t));
-     pthread_create(&python_thread_ids[thread_count-1], NULL,&thread_id, NULL);
+     pthread_create(&python_thread_ids[thread_count-1], NULL,&thread_main, NULL);
      mprint("Enterring thread joining\n");
      int i=0;
      while(i<thread_count){
@@ -540,20 +538,29 @@ void thread_main(){
       }
   }
 
-
-
-//int main(int argc, char* argv[]){
-int main(){
-    int i;
-    //struct ccx_s_options* api_options = api_init_options();
-    /*check_configuration_file(*api_options);
+void thread_main(int argc, char* argv[]){
+    mprint("Inside thread main\n");
+    struct ccx_s_options* api_options = api_init_options();
+	api_options->messages_target=CCX_MESSAGES_STDOUT_PYTHON;
+    check_configuration_file(*api_options);
     for(i = 1; i < argc; i++)
         api_add_param(api_options,argv[i]);
     
     int compile_ret = compile_params(api_options,argc);
     int start_ret = api_start(*api_options);
 	return start_ret;
-    */
-	ccx_options.messages_target=CCX_MESSAGES_STDOUT_PYTHON;
-    thread_main();
+    }
+
+//int main(int argc, char* argv[]){
+int main(){
+    int i;
+    struct ccx_s_options* api_options = api_init_options();
+    check_configuration_file(*api_options);
+    for(i = 1; i < argc; i++)
+        api_add_param(api_options,argv[i]);
+    
+    int compile_ret = compile_params(api_options,argc);
+    int start_ret = api_start(*api_options);
+	return start_ret;
+    //thread_main();
     }
