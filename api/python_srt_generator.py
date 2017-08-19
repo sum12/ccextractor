@@ -43,9 +43,34 @@ def generate_output_srt_time( fh, data):
             else:
                 buff=""
 """
-def comparing_text_font_grids(text, font):
+color_text={
+        "0":"",
+        "1":"<font color=\"#00ff00\">",
+        "2":"<font color=\"#0000ff\">",
+        "3":"<font color=\"#00ffff\">",
+        "4":"<font color=\"#ff0000\">",
+        "5":"<font color=\"#ffff00\">",
+        "6":"<font color=\"#ff00ff\">",
+        "7":"<font color=\"",
+        "8":"",
+        "9":""
+};
+def comparing__grids(text, font, color):
     temp = []
-
+    for letter,color_line in zip(text,color):
+        if "                                " not in letter:
+            buff=""
+            color_flag = 0
+            for i,font_type in enumerate(color_line): 
+                if font_type != '9' and not color_flag:
+                        buff = buff + color_text[font_type]
+                        color_flag = 1
+                elif font_type =="9" and color_flag: 
+                        buff = buff + '</font>'
+                        color_flag = 0
+                buff +=  letter[i]
+            print buff
+"""
     for letter,font_line in zip(text,font):
         if "                                " not in letter:
             buff=""
@@ -61,12 +86,15 @@ def comparing_text_font_grids(text, font):
                         italics_flag = 0
                 buff +=  letter[i]
             temp.append(buff)
-    return (temp,font)
+    return (temp,font, color)
+"""
 
     
 def generate_output_srt( fh, d):
     temp = []
-    d['text'],d['font']= comparing_text_font_grids(d['text'],d['font'])
+    comparing__grids(d['text'],d['font'],d['color'])
+    """
+    d['text'],d['font'], d['color']= comparing_text_font_grids(d['text'],d['font'], d['color'])
     for item in d['text']:
         if "                                " not in item:
             o = re.sub(r'[\x00-\x1e]',r'',item)
@@ -76,3 +104,4 @@ def generate_output_srt( fh, d):
             fh.write("\n")
             fh.flush()
     fh.write("\n")
+    """
