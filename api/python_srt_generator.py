@@ -43,7 +43,7 @@ def generate_output_srt_time( fh, data):
             else:
                 buff=""
 """
-color_text={
+color_text_start={
         "0":"",
         "1":"<font color=\"#00ff00\">",
         "2":"<font color=\"#0000ff\">",
@@ -55,23 +55,47 @@ color_text={
         "8":"",
         "9":""
 };
-def comparing__grids(text, font, color):
+color_text_end={
+        "0":"",
+        "1":"</font",
+        "2":"</font>",
+        "3":"</font>",
+        "4":"</font>",
+        "5":"</font>",
+        "6":"</font>",
+        "7":"</font>",
+        "8":"",
+        "9":""
+};
+
+
+def comparing_grids(text, font, color):
     temp = []
     for letter,color_line in zip(text,color):
+        color = 0
+        buff=""
+        color_flag = 0
         if "                                " not in letter:
-            buff=""
-            color_flag = 0
             for i,font_type in enumerate(color_line): 
                 if font_type != '9' and not color_flag:
-                        buff = buff + color_text[font_type]
+                        color = 1
+                        prev = font_type
+                        buff = buff + color_text_start[font_type]
                         color_flag = 1
-                elif font_type =="9" and color_flag: 
-                        buff = buff + '</font>'
+                elif font_type=='9' and color_flag: 
+                        buff = buff + color_text_end[prev]
                         color_flag = 0
-                buff +=  letter[i]
-            print buff
-"""
+                #        buff = buff + '</font>'
+                buff += letter[i]
+        if color:
+            temp.append(buff)
+        else:
+            temp.append(letter)
+    if temp:
+        text = temp
+        temp=[]
     for letter,font_line in zip(text,font):
+        italics = 0
         if "                                " not in letter:
             buff=""
             underline,italics = 0,0
@@ -79,29 +103,30 @@ def comparing__grids(text, font, color):
             italics_flag = 0
             for i,font_type in enumerate(font_line): 
                 if font_type == 'I' and not italics_flag:
+                        italics  = 1
                         buff = buff + '<i>'
                         italics_flag = 1
                 elif font_type =="R" and italics_flag: 
                         buff = buff + '</i>'
                         italics_flag = 0
                 buff +=  letter[i]
-            temp.append(buff)
-    return (temp,font, color)
-"""
+            if italics:
+                temp.append(buff)
+            else:
+                temp.append(letter)
+    if temp:
+        text = temp
+        temp=[]
+    return (text,font, color)
 
     
 def generate_output_srt( fh, d):
-    temp = []
-    comparing__grids(d['text'],d['font'],d['color'])
-    """
-    d['text'],d['font'], d['color']= comparing_text_font_grids(d['text'],d['font'], d['color'])
+    d['text'],d['font'], d['color'] = comparing_grids(d['text'],d['font'],d['color'])
     for item in d['text']:
         if "                                " not in item:
             o = re.sub(r'[\x00-\x1e]',r'',item)
             o = re.sub(r'\x1f[!@#$%^&*()]*', r'', o)
-            temp.append(o)
             fh.write(o)
             fh.write("\n")
             fh.flush()
     fh.write("\n")
-    """
