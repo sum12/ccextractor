@@ -110,6 +110,8 @@ def comparing_grids(text, font, color):
                         buff = buff + '</i>'
                         italics_flag = 0
                 buff +=  letter[i]
+            if italics_flag:
+                buff+='</i>'
             if italics:
                 temp.append(buff)
             else:
