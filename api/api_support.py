@@ -25,7 +25,7 @@ def generate_output_srt(line):
     if "filename:" in line:
         filename = str(str(line.split(":")[1]).split("\n")[0])
         #check for an alternative to wipe the output file in python
-        fh = srt_generator.generate_file_handle(filename,'w')
+        fh = srt_generator.generate_file_handle(filename,'w+')
         fh.write("")
         srt_generator.delete_file_handle(fh)
     elif "srt_counter-" in line:

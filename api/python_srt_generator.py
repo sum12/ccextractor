@@ -1,5 +1,6 @@
 import ccextractor as cc
 import re
+import codecs
 
 def generate_file_handle(filename, mode):
     fh = open(filename,mode)
