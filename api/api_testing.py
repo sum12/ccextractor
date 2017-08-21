@@ -3,29 +3,30 @@
 ###
 import ccextractor as cc
 import api_support
-import sys
+import sys, os
 
-def templer(arg_count, arg_list):
+def templer(arg_list):
     s =  cc.api_init_options()
     cc.check_configuration_file(s)
+    print arg_list
+    arg_count = len(arg_list)
     for i in arg_list:
         cc.api_add_param(s,str(i))
+
     #very mandatory for keeping a track of pythonapi call. Always must be set.
     cc.my_pythonapi(s, callback)
     
     compile_ret = cc.compile_params(s,arg_count);
-    
     #very mandatory for keeping a track of pythonapi call. Always must be called so that the program knows that the call is from pythonapi.
     cc.call_from_python_api(s)
-
     start_ret = cc.api_start(s);
 
 def callback(line):
     api_support.generate_output_srt(line)
+
 if __name__=="__main__":
-    arg_list = sys.argv[1:]
-    arg_count = len(arg_list)
-    templer(arg_count, arg_list)
+    args_list = sys.argv[1:]
+    templer(args_list)
 
 
 

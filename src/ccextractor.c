@@ -7,8 +7,6 @@ License: GPL 2.0
 #include "ccextractor.h"
 #include <stdio.h>
 
-//struct ccx_s_options ccx_options;
-//struct lib_ccx_ctx *signal_ctx;
 volatile int terminate_asap = 0;
 
 void sigusr1_handler(int sig)
@@ -416,20 +414,18 @@ int api_start(struct ccx_s_options api_options){
 
     print_end_msg();
 
-    if (show_myth_banner)
-    {
-        mprint("NOTICE: Due to the major rework in 0.49, we needed to change part of the timing\n");
-        mprint("code in the MythTV's branch. Please report results to the address above. If\n");
-        mprint("something is broken it will be fixed. Thanks\n");
-    }
-    remove(array.temporary_file);
-    fclose(array.fp);
+	if (show_myth_banner)
+	{
+		mprint("NOTICE: Due to the major rework in 0.49, we needed to change part of the timing\n");
+		mprint("code in the MythTV's branch. Please report results to the address above. If\n");
+		mprint("something is broken it will be fixed. Thanks\n");
+	}
+	//remove(array.temporary_file);
+    //fclose(array.fp);
     return ret ? EXIT_OK : EXIT_NO_CAPTIONS;
 }
 
 struct ccx_s_options* api_init_options(){
-    array.temporary_file = "test.txt";
-    array.fp = fopen("test.txt", "a");
     init_options(&ccx_options);
     return &ccx_options;
 }
