@@ -25,21 +25,21 @@ def generate_output_srt(line):
     if "filename:" in line:
         filename = str(str(line.split(":")[1]).split("\n")[0])
         #check for an alternative to wipe the output file in python
-        fh = srt_generator.generate_file_handle(filename,'w+')
+        fh = srt_generator.generate_file_handle(filename,'wb')
         fh.write("")
         srt_generator.delete_file_handle(fh)
     elif "srt_counter-" in line:
         srt_counter = str(line.split("-")[1])
-        fh = srt_generator.generate_file_handle(filename,'a')
+        fh = srt_generator.generate_file_handle(filename,'ab')
         fh.write(srt_counter)
         srt_generator.delete_file_handle(fh)
     elif "start_time" in line:
-        fh = srt_generator.generate_file_handle(filename,'a')
+        fh = srt_generator.generate_file_handle(filename,'ab')
         srt_generator.generate_output_srt_time(fh, line)
         srt_generator.delete_file_handle(fh)
     elif "***END OF FRAME***" in line:
         data = g608.return_g608_grid(0,text,color,font)
-        fh = srt_generator.generate_file_handle(filename,'a')
+        fh = srt_generator.generate_file_handle(filename,'ab')
         srt_generator.generate_output_srt(fh, data)
         srt_generator.delete_file_handle(fh)
         text,font,color = [],[],[]
