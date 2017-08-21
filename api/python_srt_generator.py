@@ -75,26 +75,34 @@ def comparing_grids(text, font, color):
         text = temp
         temp=[]
     for letter,font_line in zip(text,font):
+        indices = []
         italics = 0
         if "                                " not in letter:
                 buff=""
                 #Handling italics
-                italics_flag = 0
+                prev = font_line[0]
                 for i,font_type in enumerate(font_line): 
-                        if font_type == 'I' and not italics_flag:
+                        if font_type == 'I' and (prev=='R' or i==0):
                                 italics  = 1
-                                buff = buff + '<i>'
-                                italics_flag = 1
-                        elif font_type =="R" and italics_flag: 
-                                buff = buff + '</i>'
-                                italics_flag = 0
-                        buff +=  letter[i]
-                        if italics:
-                            print '|'+letter[i]+'|'+buff+'|'
-                #if italics_flag:
-                #    buff+='</i>'
+                                indices.append(i)
+                        elif font_type =="R" and prev =='I': 
+                                indices.append(i)
+                        prev = font_type
                 if italics:
-                    temp.append(buff)
+                    open = 1
+                    for i in xrange(len(letter)):
+                        if i in indices:
+                            if open:
+                                buff+='<i>'
+                                open=0
+                            else:
+                                buff+='</i>'
+                                open=1
+                        buff+=letter[i]
+                        #print '|' + letter[i]buff
+                    if len(indices)%2!=0 and italics:
+                        buff+='</i>'
+                        temp.append(buff)
                 else:
                     temp.append(letter)
     if temp:
