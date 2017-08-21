@@ -19,7 +19,8 @@ for item in os.listdir(directory):
         files.append(os.path.join(directory,item))
 for sample in files:
     print "Processing file: "+sample
-    command = ['python','api_testing.py',sample]
+    command=['../linux/ccextractor',sample]
+    #command = ['python','api_testing.py',sample]
     subprocess.call(command)
     #templer(1,[sample])
     #reload(cc)
