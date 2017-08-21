@@ -51,8 +51,6 @@ color_text_end={
 
 def comparing_grids(text, font, color):
     temp = []
-    music_symbol = u'\u266a'
-    #music_symbol = unicode(t,encoding="UTF-8")
     for letter,color_line in zip(text,color):
         color = 0
         buff=""
@@ -79,15 +77,7 @@ def comparing_grids(text, font, color):
     for letter,font_line in zip(text,font):
         italics = 0
         if "                                " not in letter:
-                letter_u = unicode(letter,'UTF-8')
-                indices = [i for i,item in enumerate(letter_u) if item==music_symbol]
-                if indices:
-                    s = []
-                    for item in indices:
-                        s.append((item,letter_u[item], font_line[item]))
-                    print s
                 buff=""
-                underline,italics = 0,0
                 #Handling italics
                 italics_flag = 0
                 for i,font_type in enumerate(font_line): 
@@ -99,8 +89,10 @@ def comparing_grids(text, font, color):
                                 buff = buff + '</i>'
                                 italics_flag = 0
                         buff +=  letter[i]
-                if italics_flag:
-                    buff+='</i>'
+                        if italics:
+                            print '|'+letter[i]+'|'+buff+'|'
+                #if italics_flag:
+                #    buff+='</i>'
                 if italics:
                     temp.append(buff)
                 else:
@@ -112,7 +104,7 @@ def comparing_grids(text, font, color):
 
     
 def generate_output_srt( filename, d):
-    #d['text'],d['font'], d['color'] = comparing_grids(d['text'],d['font'],d['color'])
+    d['text'],d['font'], d['color'] = comparing_grids(d['text'],d['font'],d['color'])
     for item in d['text']:
         if "                                " not in item:
             o = re.sub(r'[\x00-\x1e]',r'',item)
