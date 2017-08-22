@@ -6,13 +6,13 @@ import subprocess
 class PostDevelopCommand(develop):
     """Post-installation for development mode."""
     def run(self):
-        subprocess.call(['./build_library'])
+        subprocess.check_call(['./build_library'])
         develop.run(self)
 
 class PostInstallCommand(install):
     """Post-installation for installation mode."""
     def run(self):
-        subprocess.call(['./build_library'])
+        subprocess.check_call(['./build_library'])
         install.run(self)
 
 setup(
