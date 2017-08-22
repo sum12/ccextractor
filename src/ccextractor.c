@@ -613,6 +613,7 @@ void run(PyObject * reporter, char * line) {
        assert ( PyFunction_Check(reporter) );
        PyObject* args = PyTuple_Pack(1, PyString_FromString(s));
        PyObject_CallObject((PyObject*)reporter, args);
+       Py_CLEAR(args);
 }
 #endif
 int main(int argc, char* argv[])

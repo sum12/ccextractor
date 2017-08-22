@@ -1,6 +1,7 @@
 import ccextractor as cc
 import re
 import codecs
+import os
 
 """
             #Handling underline
@@ -99,10 +100,9 @@ def comparing_grids(text, font, color):
                                 buff+='</i>'
                                 open=1
                         buff+=letter[i]
-                        #print '|' + letter[i]buff
                     if len(indices)%2!=0 and italics:
                         buff+='</i>'
-                        temp.append(buff)
+                    temp.append(buff)
                 else:
                     temp.append(letter)
     if temp:
@@ -117,9 +117,12 @@ def generate_output_srt( filename, d):
         if "                                " not in item:
             o = re.sub(r'[\x00-\x1e]',r'',item)
             o = re.sub(r'\x1f[!@#$%^&*()]*', r'', o)
+            #print o
             with open(filename,'ab+') as fh:
                 fh.write(o)
                 fh.write("\n")
                 fh.flush()
+                os.fsync(fh)
     with open(filename,'ab+') as fh:
         fh.write("\n")
+        os.fsync(fh)

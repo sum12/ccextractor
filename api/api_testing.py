@@ -22,6 +22,8 @@ def templer(arg_list):
     start_ret = cc.api_start(s);
 
 def callback(line):
+    if 'filename' in line:
+        print line
     api_support.generate_output_srt(line)
 
 if __name__=="__main__":
