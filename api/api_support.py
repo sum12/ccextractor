@@ -31,13 +31,13 @@ def generate_output_srt(line):
         with open(filename,'wb+') as fh:
             fh.write("")
             fh.flush()
-            os.fsync(fh)
+  #          os.fsync(fh)
     elif "srt_counter-" in line:
         srt_counter = str(line.split("-")[1])
         with open(filename,'ab+') as fh:
             fh.write(srt_counter)
             fh.flush()
-            os.fsync(fh)
+ #           os.fsync(fh)
     elif "start_time" in line:
         with open(filename,'ab+') as fh:
                 data = line.split("-")
@@ -48,7 +48,7 @@ def generate_output_srt(line):
                 fh.write(end_time)
                 fh.write("\n")
                 fh.flush()
-                os.fsync(fh)
+#                os.fsync(fh)
 
     elif "***END OF FRAME***" in line:
         data = {}

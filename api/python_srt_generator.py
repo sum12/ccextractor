@@ -78,7 +78,7 @@ def comparing_grids(text, font, color):
     for letter,font_line in zip(text,font):
         indices = []
         italics = 0
-        if "                                " not in letter:
+        if unicode("                                ",'utf-8') not in letter:
                 buff=""
                 #Handling italics
                 prev = font_line[0]
@@ -112,17 +112,23 @@ def comparing_grids(text, font, color):
 
     
 def generate_output_srt( filename, d):
+    try:
+        d['text'] = [unicode(item,'utf-8') for item in d['text']]
+    except:
+        print "PYTHON ERROR"
+        print
+        exit(0)
     d['text'],d['font'], d['color'] = comparing_grids(d['text'],d['font'],d['color'])
     for item in d['text']:
         if "                                " not in item:
-            o = re.sub(r'[\x00-\x1e]',r'',item)
-            o = re.sub(r'\x1f[!@#$%^&*()]*', r'', o)
-            #print o
+            #o = re.sub(r'[\x00-\x1e]',r'',item)
+            #o = re.sub(r'\x1f[!@#$%^&*()]*', r'', o)
+            #d = unicode(o,'utf-8')
             with open(filename,'ab+') as fh:
-                fh.write(o)
+                fh.write(item.encode('utf-8'))
                 fh.write("\n")
                 fh.flush()
-                os.fsync(fh)
+         #       os.fsync(fh)
     with open(filename,'ab+') as fh:
         fh.write("\n")
-        os.fsync(fh)
+        #os.fsync(fh)
