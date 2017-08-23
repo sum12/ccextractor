@@ -249,6 +249,7 @@ int change_utf8_encoding(unsigned char* dest, unsigned char* src, int len, enum 
 		src += c_len;
 	}
 	*dest = 0;
+    printf("%s\n",orig);
 	return (dest - orig); // Return length
 }
 
@@ -1381,6 +1382,10 @@ unsigned int get_line_encoded(struct encoder_ctx *ctx, unsigned char *buffer, in
 		}
 		buffer += bytes;
 	}
+    //printf("****%d****\n",strlen(line));
+    //printf("%s\n",line);
+    //printf("%d\n",len(orig));
+    //printf("%s\n",orig);
 	return (unsigned int)(buffer - orig); // Return length
 }
 unsigned int get_color_encoded(struct encoder_ctx *ctx, unsigned char *buffer, int line_num, struct eia608_screen *data)

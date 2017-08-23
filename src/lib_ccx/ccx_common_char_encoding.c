@@ -1,4 +1,5 @@
 #include <ctype.h>
+#include <stdio.h>
 
 void get_char_in_latin_1 (unsigned char *buffer, unsigned char c)
 {

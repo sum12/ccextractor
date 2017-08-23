@@ -28,18 +28,19 @@ def generate_output_srt(line):
     if "filename:" in line:
         filename = str(str(line.split(":")[1]).split("\n")[0])
         #check for an alternative to wipe the output file in python
-        with open(filename,'wb+') as fh:
-            fh.write("")
-            fh.flush()
+        with open(filename,'w+') as fh:
+            pass
+#            fh.write("")
+#            fh.flush()
   #          os.fsync(fh)
     elif "srt_counter-" in line:
         srt_counter = str(line.split("-")[1])
-        with open(filename,'ab+') as fh:
+        with open(filename,'a+') as fh:
             fh.write(srt_counter)
             fh.flush()
  #           os.fsync(fh)
     elif "start_time" in line:
-        with open(filename,'ab+') as fh:
+        with open(filename,'a+') as fh:
                 data = line.split("-")
                 end_time = str(data[-1].split("\n")[0])
                 start_time = str(data[1].split("\t")[0])
