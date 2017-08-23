@@ -110,12 +110,12 @@ def comparing_grids(text, font, color):
         temp=[]
     return (text,font, color)
 
-    
 def generate_output_srt( filename, d):
     try:
         d['text'] = [unicode(item,'utf-8') for item in d['text']]
     except:
-        d['text'] = [unicode(item,'latin1') for item in d['text']]
+        d['text'] = [unicode(item,'utf-8','ignore') for item in d['text']]
+	print d['text']
     d['text'],d['font'], d['color'] = comparing_grids(d['text'],d['font'],d['color'])
     for item in d['text']:
         if "                                " not in item:
