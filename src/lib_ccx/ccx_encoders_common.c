@@ -1360,14 +1360,18 @@ unsigned int get_line_encoded(struct encoder_ctx *ctx, unsigned char *buffer, in
 {
 	unsigned char *orig = buffer; // Keep for debugging
 	unsigned char *line = data->characters[line_num];
-	for (int i = 0; i < 32; i++)
+    int found = 0;
+    int counter = 0;
+	for (int i = 0; i < 33; i++)
 	{
 		int bytes = 0;
 		switch (ctx->encoding)
 		{
 		case CCX_ENC_UTF_8:
 			bytes = get_char_in_utf_8(buffer, line[i]);
-			break;
+            if (bytes == 3) 
+                found =1;
+            break;
 		case CCX_ENC_LATIN_1:
 			get_char_in_latin_1(buffer, line[i]);
 			bytes = 1;
@@ -1376,12 +1380,30 @@ unsigned int get_line_encoded(struct encoder_ctx *ctx, unsigned char *buffer, in
 			get_char_in_unicode(buffer, line[i]);
 			bytes = 2;
 		case CCX_ENC_ASCII:
-		    *buffer = line[i];
+            if (line[i]==32)
+                *buffer = '.';
+            else
+                *buffer = line[i];
 			bytes = 1;
 			break;
 		}
 		buffer += bytes;
+		counter += bytes;
 	}
+    if (found != 0) {
+        printf("%d\n",counter);
+        for (int j = 0; j <= 32; j++) {
+            printf("%d.",line[j]);
+        }
+        printf("\n");
+        printf("line=%s\n",line);
+        for (int k = 0; k < counter; k++) {
+            printf("%d.",orig[k]);
+        }
+        printf("\n");
+        printf("orig=%s\n",orig);
+        printf("-----\n");
+    }
 	return (unsigned int)(buffer - orig); // Return length
 }
 unsigned int get_color_encoded(struct encoder_ctx *ctx, unsigned char *buffer, int line_num, struct eia608_screen *data)
